@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Estudiantes</title>
+    
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10">
+        <h1 class="text-3xl font-bold mb-6">Estudiantes</h1>
+        <form class="mb-6" action="{{ url_for('agregar_alumnos') }}", method="POST">
+            <div class="flex mb-4 gap-2">
+                <input name="nombre" type="text" class="flex-1 rounded p-4" placeholder="Nombre">
+                <input name="apellido" type="text" class="flex-1 rounded p-4" placeholder="Apellido">
+                <input name="edad" type="number" class="flex-1 rounded p-4" placeholder="Edad">
+                <input name="colegio" type="text" class="flex-1 rounded p-4" placeholder="Colegio">
+            
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Agregar Estudiante
+            </button>
+        </form>
+        <div>
+            {% for alumno in alumnos %}
+
+            <div class="bg-white rounded-lg p-4 flex justify-between items-center mb-2">
+                <span class="font-bold">{{alumno.nombre}}</span>
+                <span class="text-gray-600">{{alumno.apellido}}</span>
+                <span class="text-gray-600">{{alumno.edad}} años</span>
+                <span class="text-gray-600">{{alumno.colegio}}</span>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    <a href="{{ url_for('eliminar_alumno', id_alumno=alumno.id_alumno) }}">
+                        Eliminar
+                    </a>
+                </button>
+            </div>
+           
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
