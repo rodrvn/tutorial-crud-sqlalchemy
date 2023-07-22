@@ -20,7 +20,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-# # Agregar datos
+# Si queremos agregar datos de forma manual podemos comentar la parte de 'db.create_all()' y descomentar el siguiente codigo:
 # with app.app_context():
 #     alumno_agregar = Alumno(nombre='Rodrigo', apellido='Vallejos', edad='22', colegio='la calle')
 #     db.session.add(alumno_agregar)
